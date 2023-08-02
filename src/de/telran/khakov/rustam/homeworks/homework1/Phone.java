@@ -1,4 +1,4 @@
-package de.telran.khakov.rustam.homeworks.tasks.homework1;
+package de.telran.khakov.rustam.homeworks.homework1;
 
 public class Phone {
     private String number;
