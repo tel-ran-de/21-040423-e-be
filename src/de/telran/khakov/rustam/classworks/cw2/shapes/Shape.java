@@ -15,4 +15,9 @@ public abstract class Shape {
     public String getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return "Shape: " + type;
+    }
 }

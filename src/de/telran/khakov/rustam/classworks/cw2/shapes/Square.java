@@ -12,4 +12,12 @@ public class Square extends Shape {
     public void draw() {
         System.out.println("рисуем квадрат");
     }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "size=" + size +
+                '}';
+    }
+
 }

@@ -1,5 +1,7 @@
 package de.telran.khakov.rustam.classworks.cw2.shapes;
 
+import java.util.Scanner;
+
 public class ShapesTest {
     public static void main(String[] args) {
         Circle smallCircle = new Circle(3);
@@ -25,13 +27,30 @@ public class ShapesTest {
         for (int i = 0; i < shapes.length; i++) {
             drawShape(shapes[i]);
         }
-        Shape shape = new Circle(3);
+        //Shape circle = generate();
+        //circle.draw();
+        //circle.drawFast();
+        Circle dot = new Dot();
+        dot.draw("str");
+    }
+
+
+    public static Shape generate() {
+        Scanner scanner = new Scanner(System.in);
+        int value = scanner.nextInt();
+        if (value == 1) {
+            return new Circle(3);
+        } else {
+            return new Rectangle(2, 3);
+        }
 
     }
+
 
     public static void drawShape(Shape shape) {
         System.out.println("Я начинаю рисовать фигуру " + shape.type);
         shape.draw();
+        System.out.println(shape);//de.telran.khakov.rustam.classworks.cw2.shapes.Circle@1342fda2
         System.out.println("Я закончил рисовать фигуру");
     }
 }
