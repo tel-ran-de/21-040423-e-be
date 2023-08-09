@@ -4,6 +4,11 @@ public class Rectangle extends Shape {
     private int first;
     private int second;
 
+    @Override
+    public double calculateArea() {
+        return first * second;
+    }
+
     public Rectangle(int first, int second) {
         this.first = first;
         this.second = second;

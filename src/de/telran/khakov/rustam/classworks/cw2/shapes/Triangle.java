@@ -12,6 +12,18 @@ public class Triangle extends Shape {
     }
 
     @Override
+    public double calculateArea() {
+        double semiPerimeter = calculatePerimeter() / 2;
+        return Math.sqrt(semiPerimeter * (semiPerimeter - first)*
+                (semiPerimeter - second) * (semiPerimeter - third));
+    }
+
+    public double calculatePerimeter() {
+        return first + second + third;
+    }
+
+
+    @Override
     public void draw() {
         System.out.printf("Рисуем треугольник со сторонами %d, %d, %d%n", first, second, third);
     }

@@ -1,6 +1,12 @@
 package de.telran.khakov.rustam.classworks.cw2.shapes;
 
 public class Circle extends Shape {
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * Math.pow(radius, 2);
+    }
+
     private int radius;
 
     public Circle(int radius) {
