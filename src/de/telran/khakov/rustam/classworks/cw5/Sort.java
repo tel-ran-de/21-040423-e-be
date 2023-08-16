@@ -9,6 +9,7 @@ public class Sort {
             int max = array[0];
             int maxIndex = 0;
             for (int j = 0; j < array.length - i; j++) {
+                // current and prev  current < prev -> swap
                 if (max< array[j]) {
                     max = array[j];
                     maxIndex = j;

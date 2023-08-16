@@ -77,6 +77,10 @@ public class CreditCard {
 		return true;
 	}
 
+	public boolean checkPin(int pin) {
+		return this.pin == pin;
+	}
+
 	@Override
 	public String toString() {
 		return "CreditCard{" +
