@@ -1,9 +1,6 @@
 package de.telran.khakov.rustam.classworks.cw6;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ArrayListScenario {
     public static void main(String[] args) {
@@ -19,9 +16,8 @@ public class ArrayListScenario {
         //fill(list, 5);
         //Collections.fill(list, 5);
         System.out.println(list);
-        removeAllMoreThan(list, 5);
+        removeAllMoreThanWithIterator(list, 5);
         System.out.println(list);
-
     }
 
     public static void fill(List<Integer> list, int valToSet) {
@@ -31,15 +27,42 @@ public class ArrayListScenario {
     }
 
     public static void removeAllMoreThan(List<Integer> list, int val) {
-        List<Integer> copy = new ArrayList<>(list);
+        List<Integer> copy = new ArrayList<>(list);// int[] copy = Arrays.copy(original);
         list.clear();
         for (int i = 0; i < copy.size(); i++) {
             if (copy.get(i) <= val) {
-               list.add(copy.get(i));
+                list.add(copy.get(i));
                 //list.remove((int)i);
             }
-
-           // list.set(i, valToSet);// array[i] = valToSet
+            // list.set(i, valToSet);// array[i] = valToSet
         }
+    }
+
+    public static void removeAllMoreThanWithIterator(List<Integer> list, int val) {
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            int  current = iterator.next();
+            if (current > val) {
+                iterator.remove();
+            }
+        }
+    }
+
+
+    public static void removeAllMoreThanIncorrect(List<Integer> list, int val) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) > val) {
+                list.remove((int) i);
+            }
+            // list.set(i, valToSet);// array[i] = valToSet
+        }
+    }
+
+    public static int sum(List<Integer> list) {
+        int sum = 0;
+        for (int i = 0; i < list.size(); i++) {
+            sum += list.get(i);
+        }
+        return sum;
     }
 }
