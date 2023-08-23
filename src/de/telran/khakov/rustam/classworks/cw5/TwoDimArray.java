@@ -29,7 +29,16 @@ public class TwoDimArray {
         System.out.println(arr.length);
     }
 
-    static void print(String[][] array) {
+    public static void print(String[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void print(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 System.out.print(array[i][j] + " ");
