@@ -129,6 +129,46 @@ public class MyLinkedList implements List<Integer>, Deque<Integer> {
 
 
 
+    @Override
+    public void addFirst(Integer integer) {
+        add(0, integer);
+    }
+
+    @Override
+    public void addLast(Integer integer) {
+        add(integer);
+    }
+
+    @Override
+    public boolean offerFirst(Integer integer) {
+        return contains(integer);
+    }
+
+    @Override
+    public Integer removeFirst() {
+        return remove(0);
+    }
+
+    @Override
+    public Integer removeLast() {
+        return remove();
+    }
+
+    /**
+     * Уровень 2 - методы
+     *
+     * @see this#findNodeOnIndex(int) (int) - сделать поиск с конца, если индекс находится во второй половине списка
+     * @see this#descendingIterator() - итератор из конца в начало
+     * @see this#listIterator() - итератор с дополнительной сылкой на предыдущий
+     * @see this#toArray() - перевести в массив
+     * @see this#containsAll(Collection) - проверить содержатся ли все
+     * @see this#removeAll(Collection) - удалить все которые содержатся в коллекции
+     * @see this#lastIndexOf(Object)  - последний индекс входного элемента (идеально пожходит итератор с конца в начало)
+     * Уровень 3
+     * @see this#subList(int, int) - вернуть новый майлист который будет обрезан
+     * @see this#addAll(int, Collection) - добавить все начиная с какого-то индекса
+     * @see this#retainAll(Collection) - удалить все что не содержится во входной коллекции
+     */
 
 
 
@@ -188,33 +228,8 @@ public class MyLinkedList implements List<Integer>, Deque<Integer> {
     }
 
     @Override
-    public void addFirst(Integer integer) {
-        add(0, integer);
-    }
-
-    @Override
-    public void addLast(Integer integer) {
-        add(integer);
-    }
-
-    @Override
-    public boolean offerFirst(Integer integer) {
-        return contains(integer);
-    }
-
-    @Override
     public boolean offerLast(Integer integer) {
         return false;
-    }
-
-    @Override
-    public Integer removeFirst() {
-        return remove(0);
-    }
-
-    @Override
-    public Integer removeLast() {
-        return remove();
     }
 
     @Override
