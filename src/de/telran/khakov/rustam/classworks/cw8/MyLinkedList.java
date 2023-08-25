@@ -112,6 +112,7 @@ public class MyLinkedList implements List<Integer>, Deque<Integer> {
         } else {
             next.setPrev(prev);
         }
+        size--;
         return nodeToRemove.getValue();
     }
 
@@ -174,7 +175,12 @@ public class MyLinkedList implements List<Integer>, Deque<Integer> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object o : c) {
+            if (!contains(o)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
