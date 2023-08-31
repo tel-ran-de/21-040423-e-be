@@ -35,9 +35,12 @@ public class Cat implements Comparable<Cat> {
                 && Objects.equals(name, cat.name);
     }
 
-    @Override
-    public int compareTo(Cat o) { // > < ==
-        int diff = this.birthYear - o.birthYear;// 2022 - 2020 = 2
+    // this > other  +   19
+    // this < other  -   -7
+    // this == other  =   0
+     @Override
+    public int compareTo(Cat other) { // > < ==
+        int diff = this.birthYear - other.birthYear;// 2022 - 2020 = 2
         return diff;
     }
 

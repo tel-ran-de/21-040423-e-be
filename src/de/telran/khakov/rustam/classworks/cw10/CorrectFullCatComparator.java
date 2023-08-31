@@ -6,7 +6,7 @@ public class CorrectFullCatComparator implements Comparator<Cat> {
     @Override
     public int compare(Cat cat1, Cat cat2) {
         int diff = cat1.getBirthYear() - cat2.getBirthYear();
-        if(diff == 0) {
+        if (diff == 0) {
             int weightDiff = cat1.getWeight() - cat2.getWeight();
             if (weightDiff == 0) {
                 int nameOrder = cat1.getName().compareTo(cat2.getName());// по имени
