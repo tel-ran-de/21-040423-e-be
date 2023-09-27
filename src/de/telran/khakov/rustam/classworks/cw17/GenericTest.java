@@ -1,5 +1,7 @@
 package de.telran.khakov.rustam.classworks.cw17;
 
+import de.telran.khakov.rustam.classworks.cw7.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +24,12 @@ public class GenericTest {
         Arhive<Integer> intArhive = new Arhive<>(16, 10);
         System.out.println((Integer) intArhive.arhivedType);
         System.out.println((Integer) intArhive.getArhivedType());
+
+        List list1 = new ArrayList();
+        list1.add("13");
+        list1.add(13);
+        list1.add(new Book("",""));
+        list1.add("13");
+
     }
 }
