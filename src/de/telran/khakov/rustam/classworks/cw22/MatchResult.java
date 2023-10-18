@@ -8,8 +8,8 @@ public class MatchResult {
     String secondTeam;
     int firstTeamBalls;
     int secondTeamBalls;
-    int wathcers;
-    String stadiumName;
+    public int wathcers;
+    public String stadiumName;
 
     //2022, 11, 12, Werder Bremen, 1:02, RB Leipzig, 41500, Weser-Stadion
     public MatchResult(String line) {
