@@ -1,0 +1,29 @@
+{
+  "index_patterns": [
+    "courier_salary.synthetic_address-*"
+  ],
+  "version": 69,
+  "settings": {
+    "index": {
+      "mapping": {
+        "coerce": false,
+        "ignore_malformed": true,
+        "total_fields.limit": 100
+      },
+      "codec": "best_compression",
+      "number_of_shards": 6
+    },
+    "analysis": {
+      "normalizer": {
+        "lowercase_normalizer": {
+          "type": "custom",
+          "char_filter": [],
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  }
+}

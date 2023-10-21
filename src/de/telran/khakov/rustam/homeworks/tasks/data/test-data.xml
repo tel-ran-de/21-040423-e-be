@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:queryAllResponse xmlns:urn="urn:partner.soap.sforce.com"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns:sf="urn:sobject.partner.soap.sforce.com">
+    <urn:result>
+        <urn:done>true</urn:done>
+        <urn:queryLocator xsi:nil="true"/>
+        <urn:records xsi:type="urn:sObject">
+            <sf:type>PermissionSetAssignment</sf:type>
+            <sf:Id>0Pa5I000000gB1VSAU</sf:Id>
+            <sf:AssigneeId>0055I000000Kod4QAC</sf:AssigneeId>
+        </urn:records>
+        <urn:records xsi:type="sObject">
+            <sf:type>PermissionSet</sf:type>
+            <sf:Id>0Pa5I000001irpiSAA</sf:Id>
+            <sf:AssigneeId>0055I000000Kod4QAC</sf:AssigneeId>
+        </urn:records>
+        <urn:records xsi:type="sObject">
+            <sf:type>PermissionSet</sf:type>
+            <sf:Id>0Pa5I000001is43SAA</sf:Id>
+            <sf:AssigneeId>0055I000000Kod4QAC</sf:AssigneeId>
+        </urn:records>
+        <urn:records xsi:type="sObject">
+            <sf:type>PermissionSetAssignment</sf:type>
+            <sf:Id>0Pa5I000000gAl8SAE</sf:Id>
+            <sf:AssigneeId>0055I000000Kod4QAC</sf:AssigneeId>
+        </urn:records>
+        <urn:records xsi:type="sObject">
+            <sf:type>Permission</sf:type>
+            <sf:Id>0Pa5I0000013DPKSA2</sf:Id>
+            <sf:UserId>0055I000000Kod4QAC</sf:UserId>
+        </urn:records>
+    </urn:result>
+</urn:queryAllResponse>
