@@ -1,0 +1,2 @@
+hashType=MD5
+serviceType=com.de.telran.UserService

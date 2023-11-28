@@ -3,7 +3,7 @@ package de.telran.khakov.rustam.classworks.cw32;
 public class User {
     private String email;
     private String password;
-    private String name;
+    private final String name;
 
     public User(String email, String password, String name) {
         this.email = email;
@@ -27,11 +27,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="wifiConnector" class="de.telran.WifiConnector"/>
+    <bean id="wifiConnector2" class="de.telran.WifiConnector"/>
+    <bean id="printer" class="de.telran.SmartPrinter" init-method="init" destroy-method="destroy" lazy-init="true">
+        <property name="connector" ref="wifiConnector" />
+    </bean>
+    <bean id="printer2" class="de.telran.Printer" factory-method="creator"/>
+</beans>

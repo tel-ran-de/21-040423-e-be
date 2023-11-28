@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Fabric {
-    private Map<HashType, Hashable> type2Impl = new HashMap<>();
+    private Map<HashType, Hashable> type2Impl;
 
     public Fabric() {
         this.type2Impl = new HashMap<>();
