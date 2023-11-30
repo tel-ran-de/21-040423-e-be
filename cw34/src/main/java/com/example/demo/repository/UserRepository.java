@@ -2,17 +2,28 @@ package com.example.demo.repository;
 
 import com.example.demo.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.*;
 
-@Component
+@Repository
 public class UserRepository {
 
-    public List<User> findAll() {
-        return List.of(new User());
+    private Map<String, User> users = new HashMap<>();
+
+    public UserRepository() {
+        users.put("test.test@test", new User("John", 33));
+    }
+
+    public Collection<User> findAll() {
+        return users.values();
     }
 
     public User getUserByEmail(String email) {
-        return new User();
+        return users.get(email);
+    }
+
+    public void create(User user) {
+        users.put(user.getEmail(), user);
     }
 }
