@@ -22,7 +22,7 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public User create(@RequestParam String email) {
         return userService.create(new User("Test", counter++, new Random().nextInt(100), email));
     }
