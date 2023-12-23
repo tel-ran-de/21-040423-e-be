@@ -1,5 +1,6 @@
 package de.telran.service;
 
+import de.telran.dto.TokenResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -25,23 +26,32 @@ public class JwtService {
         secretKey = Keys.hmacShaKeyFor("gdgdfgdgdfgdgdgdgdg8df9g8fdg098fg9sd8g09fd8g90df8sg98fd09s8g09d".getBytes());
     }
 
-    public String generate(UserDetails userDetails) {
+    public TokenResponse generate(UserDetails userDetails) {
         Date exp = Date.from(LocalDateTime.now().plusMinutes(2).atZone(ZoneId.systemDefault())
                 .toInstant());
-        return Jwts.builder()
+        Date expRefresh = Date.from(LocalDateTime.now().plusHours(12).atZone(ZoneId.systemDefault())
+                .toInstant());
+        String token = Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .signWith(secretKey)
                 .setExpiration(exp)
                 .claim("roles", userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .compact();
+        String refreshToken = Jwts.builder()
+                .setSubject(userDetails.getUsername())
+                .setExpiration(expRefresh)
+                .signWith(secretKey)
+                .compact();
+        return new TokenResponse(token, refreshToken);
     }
 
-    public Jws<Claims> validate(String token) {
+    public Claims validate(String token) {
         try {
-            Jws<Claims> claimsJws = Jwts.parser()
+            Claims claimsJws = Jwts.parser()
                     .setSigningKey(secretKey)
                     .build()
-                    .parseClaimsJws(token);
+                    .parseClaimsJws(token)
+                    .getPayload();
             return claimsJws;
         } catch (Exception e) {
             //add logging

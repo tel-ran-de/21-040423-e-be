@@ -7,6 +7,7 @@ import de.telran.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,13 +23,15 @@ public class OrderService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public Order getById(int id) {
         log.trace("request to get user id: {}", id);
         log.debug("request to get user id: {}", id);
         log.info("request to get user id: {}", id);
         log.warn("request to get user id: {}", id);
         log.error("request to get user id: {}", id);
-        return orderRepository.findById(id).orElseThrow();
+        Order order = orderRepository.findById(id).orElseThrow();
+        return order;
     }
 
     public List<Order> getAll() {

@@ -1,28 +1,17 @@
-package de.telran.model;
+package de.telran.dto;
 
-import jakarta.persistence.*;
+import de.telran.model.Order;
 
 import java.util.Date;
 
-@Entity(name = "orders")
-public class Order {
-    @Id
-    @GeneratedValue
+public class OrderDto {
     private Integer id;
 
     private Date date;
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public Order() {
-    }
-
-    public Order(int id) {
-        this.id = id;
+    public OrderDto() {
     }
 
     public Integer getId() {
@@ -49,11 +38,11 @@ public class Order {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public static OrderDto from(Order order) {
+        OrderDto orderDto = new OrderDto();
+        orderDto.setDate(order.getDate());
+        orderDto.setName(order.getName());
+        orderDto.setId(order.getId());
+        return orderDto;
     }
 }

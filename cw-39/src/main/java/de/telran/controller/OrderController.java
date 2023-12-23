@@ -1,5 +1,6 @@
 package de.telran.controller;
 
+import de.telran.dto.OrderDto;
 import de.telran.model.Order;
 import de.telran.service.OrderService;
 import org.slf4j.Logger;
@@ -19,9 +20,9 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{id}") //users/45
-    public Order getById(@PathVariable int id) {
+    public OrderDto getById(@PathVariable int id) {
         log.debug("request to get user id: {}", id);
-        return orderService.getById(id);
+        return OrderDto.from(orderService.getById(id));
     }
 
     @GetMapping("/orders") //users/45

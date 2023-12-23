@@ -27,10 +27,10 @@ public class JwtFilter extends GenericFilterBean {
         String authorization = ((HttpServletRequest) servletRequest).getHeader("Authorization");
         if(authorization != null && authorization.startsWith("Bearer ")) {
             String token = authorization.substring(BEARER.length());
-            Jws<Claims> claims = jwtService.validate(token);
+            Claims claims = jwtService.validate(token);
             if(claims != null) {
-                String name = claims.getPayload().getSubject();
-                List<String> roles = ((List<String>)claims.getPayload().get("roles"));
+                String name = claims.getSubject();
+                List<String> roles = ((List<String>)claims.get("roles"));
                 JwtAuthentication authentication = new JwtAuthentication(roles, name);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
