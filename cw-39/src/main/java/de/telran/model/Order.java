@@ -3,6 +3,7 @@ package de.telran.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity(name = "orders")
 public class Order {
@@ -17,6 +18,8 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+   // Set<Status> statuses;
 
     public Order() {
     }
@@ -56,4 +59,12 @@ public class Order {
     public void setUser(User user) {
         this.user = user;
     }
+
+//    public Set<Status> getStatuses() {
+//        return statuses;
+//    }
+//
+//    public void setStatuses(Set<Status> statuses) {
+//        this.statuses = statuses;
+//    }
 }

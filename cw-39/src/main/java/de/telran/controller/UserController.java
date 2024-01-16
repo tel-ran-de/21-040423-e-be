@@ -3,12 +3,16 @@ package de.telran.controller;
 import de.telran.dto.UserCreateOrUpdateReq;
 import de.telran.model.User;
 import de.telran.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +20,7 @@ import java.util.Map;
 import java.util.Random;
 
 @RestController
+@Tag(name = "User controller", description = "controller for user")
 public class UserController {
     private UserService userService;
 
@@ -40,6 +45,19 @@ public class UserController {
     @PreAuthorize(value = "hasRole('ADMIN')")
     public User getUser(@PathVariable int id) {
         return userService.getById(id);
+    }
+
+    @GetMapping("/me")
+    public User getMe() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null) {
+            return null;
+        }
+        String email = (String) authentication.getCredentials();
+        if (email != null) {
+            return userService.getByEmail(email);
+        }
+        return null;
     }
 
     @PostMapping("/users")

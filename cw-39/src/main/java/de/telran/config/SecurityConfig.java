@@ -51,6 +51,7 @@ public class SecurityConfig {
                                         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                                         .and()
                                         .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                                        //.oauth2Login();
                             } catch (Exception e) {
                                 throw new RuntimeException(e);
                             }

@@ -59,4 +59,8 @@ public class UserService {
         oldUser.setName(user.getName());
         return userRepository.save(oldUser);
     }
+
+    public User getByEmail(String email) {
+        return userRepository.findUserByEmail(email).orElseThrow();
+    }
 }
