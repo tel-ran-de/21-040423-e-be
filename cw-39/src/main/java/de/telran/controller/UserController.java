@@ -75,6 +75,12 @@ public class UserController {
         return userService.update(id, user);
     }
 
+
+    @GetMapping("/activate")
+    public boolean activate(@RequestParam String token, @RequestParam String email) {
+        return userService.activate(token, email);
+    }
+
 //    @ExceptionHandler(UsersNotFoundException.class)
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
 //    public Map<String, String> errorHandling(UsersNotFoundException une){

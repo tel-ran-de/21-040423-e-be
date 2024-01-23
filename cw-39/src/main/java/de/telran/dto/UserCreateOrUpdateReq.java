@@ -4,7 +4,9 @@ import de.telran.model.User;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 
 public class UserCreateOrUpdateReq {
     @Pattern(regexp = "[a-z,A-Z]+")
@@ -13,6 +15,13 @@ public class UserCreateOrUpdateReq {
     int age;
     @Email(message = "невалидный емаил")
     String email;
+
+    @NotEmpty
+    @Length(min = 6)
+    String password;
+
+    String repeatPassword;
+
 
     public UserCreateOrUpdateReq() {
     }
@@ -54,5 +63,22 @@ public class UserCreateOrUpdateReq {
 
     public User toUser() {
         return null;//transform
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
     }
 }

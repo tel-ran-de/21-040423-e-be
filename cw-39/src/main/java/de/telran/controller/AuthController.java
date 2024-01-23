@@ -3,9 +3,9 @@ package de.telran.controller;
 import de.telran.dto.RefreshTokenRequest;
 import de.telran.dto.TokenResponse;
 import de.telran.dto.UserTokenRequest;
+import de.telran.exception.UserNotActivatedException;
 import de.telran.service.JwtService;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -40,6 +40,9 @@ public class AuthController {
     @PostMapping("/api/login")
     public TokenResponse login(@RequestBody UserTokenRequest req) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(req.getName());
+        if (!userDetails.isEnabled()) {
+            throw new UserNotActivatedException();
+        }
         if (passwordEncoder.matches(req.getPassword(), userDetails.getPassword())) {
             TokenResponse generate = jwtService.generate(userDetails);
             refreshTokenToUser.put(generate.getRefreshToken(), req.getName());

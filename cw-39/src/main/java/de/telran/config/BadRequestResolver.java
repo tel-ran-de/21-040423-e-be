@@ -1,5 +1,6 @@
 package de.telran.config;
 
+import de.telran.exception.UserNotActivatedException;
 import de.telran.exception.UserNotFoundException;
 import de.telran.exception.UsersNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,6 +38,13 @@ public class BadRequestResolver extends ResponseEntityExceptionHandler {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(Map.of("error", "something wrong"));
         }
+    }
+
+
+    @ExceptionHandler({UserNotActivatedException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Map<String, String>> userNotActive(Exception e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(Map.of("error", "users not activated yet, please check mailbox"));
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)

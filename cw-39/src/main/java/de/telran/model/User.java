@@ -9,6 +9,9 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Entity(name = "users")
 public class User {
 
@@ -22,18 +25,26 @@ public class User {
     @Email(message = "невалидный емаил")
     String email;
 
+    UserStatus status;
+
     private String password;
 
+    private String activationToken;
+    private LocalDateTime activateToTime;
+
     public User() {
+        this.status = UserStatus.NOT_ACTIVATED;
     }
 
     public User(String name, int id, int age) {
+        this();
         this.name = name;
         this.id = id;
         this.age = age;
     }
 
     public User(String name, Integer id, int age, String email) {
+        this();
         this.name = name;
         this.id = id;
         this.age = age;
@@ -78,5 +89,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getActivateToTime() {
+        return activateToTime;
+    }
+
+    public void setActivateToTime(LocalDateTime activateToTime) {
+        this.activateToTime = activateToTime;
+    }
+
+    public String getActivationToken() {
+        return activationToken;
+    }
+
+    public void setActivationToken(String activationToken) {
+        this.activationToken = activationToken;
     }
 }

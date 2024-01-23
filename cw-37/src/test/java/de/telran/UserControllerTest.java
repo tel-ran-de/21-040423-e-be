@@ -38,7 +38,7 @@ public class UserControllerTest {
     @Test
     public void createUserWithCorrectEmailShouldReturn400() throws Exception {
         Mockito.when(userRepository.save(Mockito.any())).thenReturn(new User("Test",1,1,"valid@test.com"));
-        mockMvc.perform(MockMvcRequestBuilders.get("/create")
+        mockMvc.perform(MockMvcRequestBuilders.post("/create")
                         .param("email","valid@test.com"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(StringContains.containsString("valid@test.com")));

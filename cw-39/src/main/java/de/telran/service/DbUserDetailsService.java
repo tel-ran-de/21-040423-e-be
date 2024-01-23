@@ -3,6 +3,7 @@ package de.telran.service;
 import de.telran.dao.RoleRepository;
 import de.telran.dao.UserRepository;
 import de.telran.model.User;
+import de.telran.model.UserStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,11 +30,13 @@ public class DbUserDetailsService implements UserDetailsService {
         private String password;
         private String login;
         private List<? extends GrantedAuthority> authorityList;
+        private  boolean isEnabled;
 
         public DbUser(User user, List<? extends GrantedAuthority> authorityList) {
             this.password = user.getPassword();
             this.login = user.getEmail();
             this.authorityList = authorityList;
+            isEnabled = user.getStatus() != UserStatus.NOT_ACTIVATED;
         }
 
         @Override
@@ -68,7 +71,7 @@ public class DbUserDetailsService implements UserDetailsService {
 
         @Override
         public boolean isEnabled() {
-            return true;
+            return isEnabled;
         }
     }
 }
